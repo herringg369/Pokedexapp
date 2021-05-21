@@ -1,4 +1,4 @@
-let pokeList = {
+let pokeList = [
 			{name:"bulbasaur",
 			height:0.7,
 			type:["grass","poison"]},
@@ -7,17 +7,16 @@ let pokeList = {
 			type:["fire","flying"]},
 			{name:"beedrill",
 			height:1,
-			type:["bug","poison"]}
-	};
+			type:["bug","poison"]},
+	];
+	
 
 for (let i=0; i < pokeList.length; i++){
-	document.write(pokeList.name + pokeList.height));
-
-if (pokeList[i].height >= 2){
-document.write(pokeList[i].name + " (" + "height" + pokeList[i].height ") " + "Wow what a large pokemon!");
+	
+if(pokeList[i].height >= 2){
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
+	
 }else{
-document.write(pokeList[i].name + " (" + "height" + pokeList[i].height ") ");
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
 }
 }
-
-alert("this is a test bacon")
