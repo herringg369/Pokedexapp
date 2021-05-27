@@ -1,4 +1,5 @@
-let pokeList1 = [
+(function (){
+	let pokeList1 = [
 			{name:"bulbasaur",
 			height:0.7,
 			type:["grass","poison"]},
@@ -9,6 +10,7 @@ let pokeList1 = [
 			height:1,
 			type:["bug","poison"]},
 	];
+})();
 	
 let pokemonRepository = (function () {
   let pokemonList = [];
