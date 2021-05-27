@@ -12,6 +12,19 @@
 	];
 })();
 	
+pokemonList.forEach(function(poke){
+
+	let i=0; i < pokeList.length; i++){
+	
+	if(pokeList[i].height >= 2){
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
+	
+}	else{
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
+  }
+ }
+});
+
 let pokemonRepository = (function () {
   let pokemonList = [];
 
@@ -28,17 +41,3 @@ let pokemonRepository = (function () {
     getAll: getAll
   };
 })();
-
-pokemonList.forEach(function(poke){
-
-	let i=0; i < pokeList.length; i++){
-	
-	if(pokeList[i].height >= 2){
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
-	
-}	else{
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
-  }
- }
-});
-
