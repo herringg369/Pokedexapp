@@ -1,4 +1,4 @@
-let pokeList = [
+let pokeList1 = [
 			{name:"bulbasaur",
 			height:0.7,
 			type:["grass","poison"]},
@@ -10,13 +10,33 @@ let pokeList = [
 			type:["bug","poison"]},
 	];
 	
+let pokemonRepository = (function () {
+  let pokemonList = [];
 
-for (let i=0; i < pokeList.length; i++){
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
+
+pokemonList.forEach(function(poke){
+
+	let i=0; i < pokeList.length; i++){
 	
-if(pokeList[i].height >= 2){
+	if(pokeList[i].height >= 2){
 	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
 	
-}else{
+}	else{
 	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
-}
-}
+  }
+ }
+});
+
