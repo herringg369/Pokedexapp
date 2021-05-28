@@ -11,25 +11,12 @@
 			type:["bug","poison"]},
 	];
 })();
-	
-pokemonList.forEach(function(poke){
-
-	let i=0; i < pokeList.length; i++){
-	
-	if(pokeList[i].height >= 2){
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
-	
-}	else{
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
-  }
- }
-});
 
 let pokemonRepository = (function () {
   let pokemonList = [];
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+    pokemonList.push();
   }
 
   function getAll() {
@@ -41,3 +28,22 @@ let pokemonRepository = (function () {
     getAll: getAll
   };
 })();
+	
+let pokemonInfo = pokemonRepository.getAll();
+
+pokemonInfo.forEach (function(pokemon) {
+document.write(pokemon.name + " " + pokemon.type + " " + " (" + "height " + pokemon.height + ") <br />");
+});
+
+/*
+Old Code
+	let (i=0; i < pokeList.length; i++){
+	
+	if(pokeList[i].height >= 2){
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
+	
+}	else{
+	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
+  }
+ }
+*/
