@@ -1,3 +1,21 @@
+let pokemonRepository = (function () {
+  let pokemonList = [];
+
+  function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+})();
+
+
 (function (pokeList){
 	let pokeList1 = [
 			{name:"bulbasaur",
@@ -10,23 +28,25 @@
 			height:1,
 			type:["bug","poison"]},
 	];
+	return pokeList1;
 })();
 
-let pokemonRepository = (function () {
-  let pokemonList = [];
+function add(pokemon) {
+if (typeof pokemon === 'object') {
+return pokemonList.push(pokemon);
+} else {
+document.write("Please insert name of Pokemon");
+}
+}
 
-  function add(pokemon) {
-    pokemonList.push(pokeList1);
-  }
+function getAll() {
+return pokemonList;
+}
 
-  function getAll() {
-    return pokemonList;
-  }
-
-  return {
-    add: add,
-    getAll: getAll
-  };
+return {
+add: add,
+getAll: getAll
+};
 })();
 	
 let pokemonInfo = pokemonRepository.getAll();
