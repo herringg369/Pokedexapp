@@ -15,7 +15,6 @@ let pokemonRepository = (function () {
   };
 })();
 
-
 (function (pokeList){
 	let pokeList1 = [
 			{name:"bulbasaur",
