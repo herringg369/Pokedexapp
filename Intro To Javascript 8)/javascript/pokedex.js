@@ -46,7 +46,6 @@ return {
 add: add,
 getAll: getAll
 };
-})();
 	
 let pokemonInfo = pokemonRepository.getAll();
 
