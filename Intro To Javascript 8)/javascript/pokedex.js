@@ -1,8 +1,30 @@
+/*(function (pokeList){*/
+	let pokeList1 = [
+			{name:"bulbasaur",
+			height:0.7,
+			type:["grass","poison"]},
+			{name:"charizard",
+			height:1.7,
+			type:["fire","flying"]},
+			{name:"beedrill",
+			height:1,
+			type:["bug","poison"]},
+	];
+//list of pokemon name, height, type	
+	
+/*	return pokeList1;
+})();*/
+
 let pokemonRepository = (function () {
-  let pokemonList = [];
+  let pokemonList = pokeList1;
 
   function add(pokemon) {
-    pokemonList.push(pokemon);
+	if (typeof pokemon === 'object') {
+	return pokemonList.push(pokemon);
+	} else {
+	document.write("Please insert name of Pokemon");
+}
+
   }
 
   function getAll() {
@@ -15,21 +37,10 @@ let pokemonRepository = (function () {
   };
 })();
 
-(function (pokeList){
-	let pokeList1 = [
-			{name:"bulbasaur",
-			height:0.7,
-			type:["grass","poison"]},
-			{name:"charizard",
-			height:1.7,
-			type:["fire","flying"]},
-			{name:"beedrill",
-			height:1,
-			type:["bug","poison"]},
-	];
-	return pokeList1;
-})();
+// Returns 2 functions, add and Getall
 
+console.log(pokemonRepository);
+/*
 function add(pokemon) {
 if (typeof pokemon === 'object') {
 return pokemonList.push(pokemon);
@@ -40,14 +51,12 @@ document.write("Please insert name of Pokemon");
 
 function getAll() {
 return pokemonList;
-}
+*/
 
-return {
-add: add,
-getAll: getAll
-};
 	
 let pokemonInfo = pokemonRepository.getAll();
+
+console.log(pokemonInfo);
 
 pokemonInfo.forEach (function(pokemon) {
 document.write(pokemon.name + " " + pokemon.type + " " + " (" + "height " + pokemon.height + ") <br />");
