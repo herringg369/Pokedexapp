@@ -35,6 +35,20 @@ let pokemonRepository = (function () {
     add: add,
     getAll: getAll
   };
+  
+  function addListItem(){
+	document.querySelector(".pokemon-list");
+	let listItem = document.createElement("li");
+	let button = document.createElement("button");
+	button.classList.add("pokebutton");
+	button.addEventListner("click", showDetails());
+	listItem.appendChild(button);
+	document.querySelector("ul").appendChild(listItem);
+  }
+  
+  function showDetails(){
+	  console.log(pokemon);
+  }
 })();
 
 // Returns 2 functions, add and Getall
@@ -59,18 +73,12 @@ let pokemonInfo = pokemonRepository.getAll();
 console.log(pokemonInfo);
 
 pokemonInfo.forEach (function(pokemon) {
-document.write(pokemon.name + " " + pokemon.type + " " + " (" + "height " + pokemon.height + ") <br />");
+	document.querySelector(".pokemon-list");
+	let listItem = document.createElement("li");
+	let button = document.createElement("button");
+	button.classList.add("pokebutton");
+	listItem.appendChild(button);
+	document.querySelector("ul").appendChild(listItem);
 });
 
-/*
-Old Code
-	let (i=0; i < pokeList.length; i++){
-	
-	if(pokeList[i].height >= 2){
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") " + " Wow what a large pokemon!");
-	
-}	else{
-	document.write(pokeList[i].name + " (" + "height " + pokeList[i].height + ") ");
-  }
- }
-*/
+//event handling
