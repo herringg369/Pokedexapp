@@ -41,7 +41,9 @@ let pokemonRepository = (function () {
 	let listItem = document.createElement("li");
 	let button = document.createElement("button");
 	button.classList.add("pokebutton");
-	button.addEventListner("click", showDetails());
+	button.addEventListner("click", function(event) {
+		showDetails(pokemon);
+	});
 	listItem.appendChild(button);
 	document.querySelector("ul").appendChild(listItem);
   }
