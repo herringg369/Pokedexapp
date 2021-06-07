@@ -48,9 +48,6 @@ let pokemonRepository = (function () {
 	document.querySelector("ul").appendChild(listItem);
   }
   
-  function showDetails(){
-	  console.log(pokemon);
-  }
 })();
 
 // Returns 2 functions, add and Getall
@@ -74,13 +71,21 @@ let pokemonInfo = pokemonRepository.getAll();
 
 console.log(pokemonInfo);
 
+//pokemon is the same as pokeList1
+
 pokemonInfo.forEach (function(pokemon) {
-	document.querySelector(".pokemon-list");
+	let container = document.querySelector(".pokemon-list");
 	let listItem = document.createElement("li");
 	let button = document.createElement("button");
 	button.classList.add("pokebutton");
+	button.innerHTML = pokemon.name;
+	button.addEventListener("click", function showDetails(){
+		console.log(pokemon)
+		
+	});
 	listItem.appendChild(button);
-	document.querySelector("ul").appendChild(listItem);
+	container.appendChild(listItem);
+
 });
 
 //event handling
