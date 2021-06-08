@@ -85,7 +85,6 @@ pokemonInfo.forEach (function(pokemon) {
 	});
 	listItem.appendChild(button);
 	container.appendChild(listItem);
-
 });
 
 //event handling
