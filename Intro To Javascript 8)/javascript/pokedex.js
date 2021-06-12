@@ -1,15 +1,5 @@
 /*(function (pokeList){*/
-	let pokeList1 = [
-			{name:"bulbasaur",
-			height:0.7,
-			type:["grass","poison"]},
-			{name:"charizard",
-			height:1.7,
-			type:["fire","flying"]},
-			{name:"beedrill",
-			height:1,
-			type:["bug","poison"]},
-	];
+let pokeList1 = [];
 //list of pokemon name, height, type	
 	
 /*	return pokeList1;
@@ -53,19 +43,6 @@ let pokemonRepository = (function () {
 // Returns 2 functions, add and Getall
 
 console.log(pokemonRepository);
-/*
-function add(pokemon) {
-if (typeof pokemon === 'object') {
-return pokemonList.push(pokemon);
-} else {
-document.write("Please insert name of Pokemon");
-}
-}
-
-function getAll() {
-return pokemonList;
-*/
-
 	
 let pokemonInfo = pokemonRepository.getAll();
 
@@ -85,6 +62,61 @@ pokemonInfo.forEach (function(pokemon) {
 	});
 	listItem.appendChild(button);
 	container.appendChild(listItem);
+
 });
 
 //event handling
+
+let fullList = fetch("https://pokeapi.co/api/v2/pokemon/?limit=150").then(function (response) {
+  return response.json(); // This returns a promise!
+}).then(function (pokemonList) {
+  addListItem(pokemon);
+  console.log(pokemonList); // The actual JSON response
+}).catch(function () {
+  // Error
+});
+
+function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+  function showDetails(pokemon) {
+	loadDetails(pokemon).then(function () {
+	  console.log(pokemon);
+	});
+  }
+/*
+  function add(pokemon) {
+	if (typeof pokemon === 'object') {
+	return pokemonList.push(pokemon);
+	} else {
+	document.write("Please insert name of Pokemon");
+}
+*/
+add(fullList);
