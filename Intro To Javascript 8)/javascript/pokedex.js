@@ -67,10 +67,10 @@ pokemonInfo.forEach (function(pokemon) {
 
 //event handling
 
-let fullList = fetch("https://pokeapi.co/api/v2/pokemon/?limit=150").then(function (response) {
+fetch("https://pokeapi.co/api/v2/pokemon/?limit=150").then
+(function (response) {
   return response.json(); // This returns a promise!
 }).then(function (pokemonList) {
-  addListItem(pokemon);
   console.log(pokemonList); // The actual JSON response
 }).catch(function () {
   // Error
@@ -119,4 +119,3 @@ function loadDetails(item) {
 	document.write("Please insert name of Pokemon");
 }
 */
-add(fullList);
