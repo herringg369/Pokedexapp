@@ -1,6 +1,6 @@
 let pokemonRepository = (function() {
   let pokemonList = []
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?=150";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150;"
 
   function loadList() {
     return fetch(apiUrl).then(function (response) {
@@ -32,6 +32,8 @@ function addListItem(pokemon) {
     showDetails(pokemon);
   });
 }
+
+//why does it not get all 150
 
 function getAll (){
   console.log(pokemonList)
