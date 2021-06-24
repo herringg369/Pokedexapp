@@ -2,6 +2,7 @@ let pokemonRepository = (function() {
   let pokemonList = []
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150;"
 
+  //moves fetch data into pokemonList in the correct form
   function loadList() {
     return fetch(apiUrl).then(function (response) {
       return response.json();
@@ -18,6 +19,7 @@ let pokemonRepository = (function() {
     })
   }
 
+  //adds a button for each pokemon in the list
 function addListItem(pokemon) {
   let pokemonList = document.querySelector(".pokemon-list");
 
@@ -33,16 +35,19 @@ function addListItem(pokemon) {
   });
 }
 
-//why does it not get all 150
+//makes it so that pokemon list is the same as pokemonRepository
 
 function getAll (){
   console.log(pokemonList)
   return pokemonList
 }
 
+//adds pokemon to the pokemonlist
 function add(pokemon){
   pokemonList.push(pokemon);
 }
+
+//loads the individual details regarding each pokemon for later
 
 function loadDetails(item) {
   let url = item.detailsUrl;
@@ -60,11 +65,15 @@ function loadDetails(item) {
   });
 }
 
+//console logs the details of each pokemon
+
 function showDetails(pokemon) {
   pokemonRepository.loadDetails(pokemon).then(function () {
     console.log(pokemon);
   });
 }
+
+//ready's the functions for later so that all functions are called at once
 
 return {
   addListItem: addListItem,
@@ -76,6 +85,8 @@ return {
   };
 
 })()
+
+//invokes the functions
 
 pokemonRepository.loadList().then(function() {
   pokemonRepository.getAll().forEach(function(pokemon) {
