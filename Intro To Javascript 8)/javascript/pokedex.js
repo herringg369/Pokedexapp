@@ -92,16 +92,19 @@ function showModal(title, text) {
   closeButtonElement.innerText = 'Close';
   closeButtonElement.addEventListener('click', hideModal);
 
-  let titleElement = document.createElement('h1');
-  titleElement.innerText = pokemonName;
+  let pokeName = document.createElement('h1');
+  pokeName.innerText = pokemonName;
 
-  let contentElement = document.createElement('div');
-  contentElement.innerHTML = "Height:" + pokemonHeight;
+  let pokeHeight = document.createElement('p');
+  pokeHeight.innerText = ("Height:" + pokemonHeight);
 
+  let pokeImg = document.createElement('div');
+  pokeImg.innerHTML = ("<img src=' " + pokemonImg + "'/>");
 
   modal.appendChild(closeButtonElement);
-  modal.appendChild(titleElement);
-  modal.appendChild(contentElement);
+  modal.appendChild(pokeName);
+  modal.appendChild(pokeHeight);
+  modal.appendChild(pokeImg);
   modalContainer.appendChild(modal);
 
 
