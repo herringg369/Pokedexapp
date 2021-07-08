@@ -26,9 +26,11 @@ function addListItem(pokemon) {
   let pokemonList = document.querySelector(".pokemon-list");
 
   let listPokemon = document.createElement("li");
+  listPokemon.setAttribute("group-list-item", "");
   let button = document.createElement("button");
   button.innerText = pokemon.name;
   button.setAttribute("name", "pokeButton");
+  button.setAttribute("name", "btn btn-primary")
 
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
@@ -81,6 +83,7 @@ function showDetails(pokemon) {
   });
 }
 
+//allows for the modal to show on screen whenever pokemon is clicked
 function showModal(title, text) {
 
   modalContainer.innerHTML = '';
@@ -111,10 +114,12 @@ function showModal(title, text) {
   modalContainer.classList.add('is-visible');
 }
 
+//changes the class in order to hide the modal
 function hideModal() {
   modalContainer.classList.remove('is-visible');
 }
 
+//allows for the escape key to close the modals
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
     hideModal();  
