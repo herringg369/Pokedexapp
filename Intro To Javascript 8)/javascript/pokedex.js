@@ -26,11 +26,11 @@ function addListItem(pokemon) {
   let pokemonList = document.querySelector(".pokemon-list");
 
   let listPokemon = document.createElement("li");
-  listPokemon.setAttribute("group-list-item", "");
+  $(listPokemon).addClass("group-list-item");
   let button = document.createElement("button");
   button.innerText = pokemon.name;
   button.setAttribute("name", "pokeButton");
-  button.setAttribute("name", "btn btn-primary")
+  $(button).addClass("btn btn-primary")
 
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
