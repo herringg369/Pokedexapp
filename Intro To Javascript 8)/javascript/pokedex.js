@@ -84,7 +84,8 @@ function showDetails(pokemon) {
 }
 
 //allows for the modal to show on screen whenever pokemon is clicked
-function showModal(title, text) {
+
+/*function showModal(title, text) {
 
   modalContainer.innerHTML = '';
   let modal = document.createElement('div');
@@ -113,8 +114,14 @@ function showModal(title, text) {
 
   modalContainer.classList.add('is-visible');
 }
+*/
+
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
 
 //changes the class in order to hide the modal
+
 function hideModal() {
   modalContainer.classList.remove('is-visible');
 }
