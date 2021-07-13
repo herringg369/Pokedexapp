@@ -73,61 +73,40 @@ function loadDetails(item) {
 //console logs the details of each pokemon
 
 function showDetails(pokemon) {
-  pokemonRepository.loadDetails(pokemon).then(function () {
-    console.log(pokemon);
-
-    pokemonName = pokemon.name;
-    pokemonHeight = pokemon.height;
-    pokemonImg = pokemon.imageUrl;
-    showModal();
+  pokemonRepository.loadDetails(pokemon).then(function (){
+  
+  let modalBody = $('.modal-body');
+  let modalTitle = $('.modal-title');
+  
+  modalTitle.empty();
+  modalBody.empty();
+  
+  let pokemonName = $('<h1>' + pokemon.name + '</h1>');
+  let pokemonImage = $('<img class="modal-img" style="width:50%">');
+  pokemonImage.attr('src' , pokemon.imageUrl);
+  let pokemonHeight = $('<p>' + 'Height: ' + pokemon.height + '</p>');
+  let pokemonTypes = document.createElement('span');
+  let types = 'Type: ';
+  pokemon.types.forEach(function (item) {
+  types += item.type.name + ' ';
   });
-}
-
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
+  pokemonTypes.innerHTML = types;
+  
+  modalTitle.append(pokemonName);
+  modalBody.append(pokemonImage);
+  modalBody.append(pokemonHeight);
+  modalBody.append(pokemonTypes);
+  
+  $('#pokeModal').modal('toggle');
+  });
+  }
 
 //allows for the modal to show on screen whenever pokemon is clicked
 
-function showModal(title, text) {
-
-  modalContainer.innerHTML = '';
-  let modal = document.createElement('div');
-  modal.classList.add('modal');
-
-  let closeButtonElement = document.createElement('button');
-  closeButtonElement.classList.add('modal-close');
-  closeButtonElement.innerText = 'Close';
-  closeButtonElement.addEventListener('click', hideModal);
-
-  let pokeName = document.createElement('h1');
-  pokeName.innerText = pokemonName;
-
-  let pokeHeight = document.createElement('p');
-  pokeHeight.innerText = ("Height:" + pokemonHeight);
-
-  let pokeImg = document.createElement('div');
-  pokeImg.innerHTML = ("<img src=' " + pokemonImg + "'/>");
-
-  modal.appendChild(closeButtonElement);
-  modal.appendChild(pokeName);
-  modal.appendChild(pokeHeight);
-  modal.appendChild(pokeImg);
-  modalContainer.appendChild(modal);
-
-
-  modalContainer.classList.add('is-visible');
-} 
 
 //changes the class in order to hide the modal
 
-
+/*
 function hideModal() {
   modalContainer.classList.remove('is-visible');
 }
@@ -145,7 +124,8 @@ modalContainer.addEventListener('click', (e) => {
   if (target === modalContainer) {
     hideModal();
   }
-}); 
+});
+*/ 
 
 document.querySelector(".pokemon-list").addEventListener('click', () => {
   showModal('Modal title', 'This is the modal content!');
