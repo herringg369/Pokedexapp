@@ -83,9 +83,19 @@ function showDetails(pokemon) {
   });
 }
 
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+
 //allows for the modal to show on screen whenever pokemon is clicked
 
-/*function showModal(title, text) {
+function showModal(title, text) {
 
   modalContainer.innerHTML = '';
   let modal = document.createElement('div');
@@ -113,14 +123,10 @@ function showDetails(pokemon) {
 
 
   modalContainer.classList.add('is-visible');
-}
-*/
-
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+} 
 
 //changes the class in order to hide the modal
+
 
 function hideModal() {
   modalContainer.classList.remove('is-visible');
@@ -139,11 +145,12 @@ modalContainer.addEventListener('click', (e) => {
   if (target === modalContainer) {
     hideModal();
   }
-});
+}); 
 
 document.querySelector(".pokemon-list").addEventListener('click', () => {
   showModal('Modal title', 'This is the modal content!');
 });
+
 
 //ready's the functions for later so that all functions are called at once
 
