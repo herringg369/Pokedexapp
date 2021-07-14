@@ -35,7 +35,7 @@ function addListItem(pokemon) {
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
 
-  button.addEventListener("pointerdown", function(event) {
+  button.addEventListener("pointerdown", function() {
     showDetails(pokemon);
   });
 }
@@ -54,17 +54,17 @@ function add(pokemon){
 
 //loads the individual details regarding each pokemon for later
 
-function loadDetails(item) {
-  let url = item.detailsUrl;
-  let name = item.name;
+function loadDetails(pokemon) {
+  let url = pokemon.detailsUrl;
+  let name = pokemon.name;
 
   return fetch(url).then(function (response) {
     return response.json();
   }).then(function (details) {
 
-    item.imageUrl = details.sprites.front_default;
-    item.height = details.height;
-    item.types = details.types;
+    pokemon.imageUrl = details.sprites.front_default;
+    pokemon.height = details.height;
+    pokemon.types = details.types;
   }).catch(function (e) {
     console.error(e);
   });
