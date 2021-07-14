@@ -30,7 +30,9 @@ function addListItem(pokemon) {
   let button = document.createElement("button");
   button.innerText = pokemon.name;
   button.setAttribute("name", "pokeButton");
-  $(button).addClass("btn btn-primary")
+  button.setAttribute("data-target", "#pokeModal");
+  button.setAttribute("data-toggle", "modal");
+  $(button).addClass("btn btn-primary");
 
   listPokemon.appendChild(button);
   pokemonList.appendChild(listPokemon);
@@ -72,7 +74,13 @@ function loadDetails(pokemon) {
 
 //console logs the details of each pokemon
 
-function showDetails(pokemon) {
+function showDetails(pokemon){
+loadDetails(pokemon).then(function() {
+  showModal(pokemon);
+});
+}
+
+function showModal(pokemon) {
   pokemonRepository.loadDetails(pokemon).then(function (){
   
   let modalBody = $('.modal-body');
@@ -127,11 +135,6 @@ modalContainer.addEventListener('click', (e) => {
 });
 */ 
 
-document.querySelector(".pokemon-list").addEventListener('click', () => {
-  showModal('Modal title', 'This is the modal content!');
-});
-
-
 //ready's the functions for later so that all functions are called at once
 
 return {
@@ -140,7 +143,8 @@ return {
   loadDetails: loadDetails,
   showDetails: showDetails,
   add: add,
-  getAll: getAll
+  getAll: getAll,
+  showModal: showModal
   };
 
 })()
