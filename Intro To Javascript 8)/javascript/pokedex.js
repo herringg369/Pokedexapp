@@ -105,7 +105,7 @@ function showModal(pokemon) {
   modalBody.append(pokemonHeight);
   modalBody.append(pokemonTypes);
   
-  $('#pokeModal').modal('toggle');
+  $('#pokemonModal').modal('toggle');
   });
   }
 
